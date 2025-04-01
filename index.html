@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmingGuid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f9f1;
+            color: #2c5e1a;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #4caf50, #2c5e1a);
+            color: white;
+            text-align: center;
+            padding: 1rem 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.2rem;
+        }
+        .hero {
+            background: url('hero.jpg') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+        }
+        .hero p {
+            font-size: 1.3rem;
+        }
+        nav {
+            background-color: #388e3c;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #2c5e1a;
+        }
+        section {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #4caf50;
+        }
+        section h2 {
+            color: #388e3c;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        section img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        select, input[type="text"] {
+            padding: 12px;
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #388e3c;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        .result {
+            font-size: 1.1rem;
+            color: #2c5e1a;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        input, textarea {
+            padding: 12px;
+            border: 2px solid #388e3c;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #388e3c;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #2c5e1a;
+        }
+        footer {
+            background: linear-gradient(135deg, #4caf50, #2c5e1a);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 30px;
+        }
+        @media (max-width: 600px) {
+            header h1, .hero h2 { font-size: 1.8rem; }
+            header p, .hero p { font-size: 1rem; }
+            nav ul { flex-direction: column; align-items: center; }
+            nav ul li { margin: 10px 0; }
+            section { margin: 15px; padding: 15px; }
+            .hero { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FarmingGuid</h1>
+        <p>Your Ultimate Companion for Sustainable Farming</p>
+    </header>
+    <div class="hero">
+        <div>
+            <h2>Welcome to FarmingGuid</h2>
+            <p>Grow smarter with expert farming tips!</p>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#irrigation">Irrigation</a></li>
+            <li><a href="#temperature">Temperature Guide</a></li>
+            <li><a href="#rotation">Crop Rotation</a></li>
+            <li><a href="#zbnf">Zero Budget Farming</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section id="irrigation">
+        <h2>Irrigation Schedule</h2>
+        <img src="irrigation.jpg" alt="Irrigation">
+        <p>Select or search your crop for its irrigation schedule:</p>
+        <select id="irrigation-select">
+            <option value="">Select a crop</option>
+            <option value="rice">Rice</option>
+            <option value="wheat">Wheat</option>
+            <option value="maize">Maize</option>
+            <option value="cotton">Cotton</option>
+            <option value="barley">Barley</option>
+            <option value="millets">Millets</option>
+            <option value="potato">Potato</option>
+            <option value="soybean">Soybean</option>
+            <option value="sugarcane">Sugarcane</option>
+            <option value="tomato">Tomato</option>
+            <option value="onion">Onion</option>
+            <option value="chickpea">Chickpea</option>
+            <option value="lentil">Lentil</option>
+            <option value="pea">Pea</option>
+            <option value="groundnut">Groundnut</option>
+            <option value="sunflower">Sunflower</option>
+            <option value="mustard">Mustard</option>
+            <option value="sorghum">Sorghum</option>
+            <option value="oats">Oats</option>
+            <option value="rye">Rye</option>
+            <option value="cassava">Cassava</option>
+            <option value="sweet_potato">Sweet Potato</option>
+            <option value="yam">Yam</option>
+            <option value="carrot">Carrot</option>
+            <option value="cabbage">Cabbage</option>
+            <option value="cauliflower">Cauliflower</option>
+            <option value="spinach">Spinach</option>
+            <option value="lettuce">Lettuce</option>
+            <option value="cucumber">Cucumber</option>
+            <option value="pumpkin">Pumpkin</option>
+            <option value="brinjal">Brinjal</option>
+            <option value="okra">Okra</option>
+            <option value="green_bean">Green Bean</option>
+            <option value="bell_pepper">Bell Pepper</option>
+            <option value="chili">Chili</option>
+            <option value="garlic">Garlic</option>
+            <option value="ginger">Ginger</option>
+            <option value="turmeric">Turmeric</option>
+            <option value="banana">Banana</option>
+            <option value="mango">Mango</option>
+            <option value="papaya">Papaya</option>
+            <option value="pineapple">Pineapple</option>
+            <option value="coconut">Coconut</option>
+            <option value="coffee">Coffee</option>
+            <option value="tea">Tea</option>
+            <option value="rubber">Rubber</option>
+            <option value="tobacco">Tobacco</option>
+            <option value="jute">Jute</option>
+            <option value="sesame">Sesame</option>
+            <option value="castor">Castor</option>
+        </select>
+        <input type="text" id="irrigation-search" placeholder="Or type crop name (e.g., Rice)">
+        <div id="irrigation-result" class="highlight result"></div>
+    </section>
+    <section id="temperature">
+        <h2>Temperature Guide</h2>
+        <img src="temp.jpg" alt="Temperature Guide">
+        <p>Select or search your crop for its ideal temperature:</p>
+        <select id="temperature-select">
+            <option value="">Select a crop</option>
+            <option value="rice">Rice</option>
+            <option value="wheat">Wheat</option>
+            <option value="maize">Maize</option>
+            <option value="cotton">Cotton</option>
+            <option value="barley">Barley</option>
+            <option value="millets">Millets</option>
+            <option value="potato">Potato</option>
+            <option value="soybean">Soybean</option>
+            <option value="sugarcane">Sugarcane</option>
+            <option value="tomato">Tomato</option>
+            <option value="onion">Onion</option>
+            <option value="chickpea">Chickpea</option>
+            <option value="lentil">Lentil</option>
+            <option value="pea">Pea</option>
+            <option value="groundnut">Groundnut</option>
+            <option value="sunflower">Sunflower</option>
+            <option value="mustard">Mustard</option>
+            <option value="sorghum">Sorghum</option>
+            <option value="oats">Oats</option>
+            <option value="rye">Rye</option>
+            <option value="cassava">Cassava</option>
+            <option value="sweet_potato">Sweet Potato</option>
+            <option value="yam">Yam</option>
+            <option value="carrot">Carrot</option>
+            <option value="cabbage">Cabbage</option>
+            <option value="cauliflower">Cauliflower</option>
+            <option value="spinach">Spinach</option>
+            <option value="lettuce">Lettuce</option>
+            <option value="cucumber">Cucumber</option>
+            <option value="pumpkin">Pumpkin</option>
+            <option value="brinjal">Brinjal</option>
+            <option value="okra">Okra</option>
+            <option value="green_bean">Green Bean</option>
+            <option value="bell_pepper">Bell Pepper</option>
+            <option value="chili">Chili</option>
+            <option value="garlic">Garlic</option>
+            <option value="ginger">Ginger</option>
+            <option value="turmeric">Turmeric</option>
+            <option value="banana">Banana</option>
+            <option value="mango">Mango</option>
+            <option value="papaya">Papaya</option>
+            <option value="pineapple">Pineapple</option>
+            <option value="coconut">Coconut</option>
+            <option value="coffee">Coffee</option>
+            <option value="tea">Tea</option>
+            <option value="rubber">Rubber</option>
+            <option value="tobacco">Tobacco</option>
+            <option value="jute">Jute</option>
+            <option value="sesame">Sesame</option>
+            <option value="castor">Castor</option>
+        </select>
+        <input type="text" id="temperature-search" placeholder="Or type crop name (e.g., Wheat)">
+        <div id="temperature-result" class="highlight result"></div>
+    </section>
+    <section id="rotation">
+        <h2>Crop Rotation</h2>
+        <img src="rotation.jpg" alt="Crop Rotation">
+        <p>Select or search your crop for rotation tips:</p>
+        <select id="rotation-select">
+            <option value="">Select a crop</option>
+            <option value="rice">Rice</option>
+            <option value="wheat">Wheat</option>
+            <option value="maize">Maize</option>
+            <option value="cotton">Cotton</option>
+            <option value="barley">Barley</option>
+            <option value="millets">Millets</option>
+            <option value="potato">Potato</option>
+            <option value="soybean">Soybean</option>
+            <option value="sugarcane">Sugarcane</option>
+            <option value="tomato">Tomato</option>
+            <option value="onion">Onion</option>
+            <option value="chickpea">Chickpea</option>
+            <option value="lentil">Lentil</option>
+            <option value="pea">Pea</option>
+            <option value="groundnut">Groundnut</option>
+            <option value="sunflower">Sunflower</option>
+            <option value="mustard">Mustard</option>
+            <option value="sorghum">Sorghum</option>
+            <option value="oats">Oats</option>
+            <option value="rye">Rye</option>
+            <option value="cassava">Cassava</option>
+            <option value="sweet_potato">Sweet Potato</option>
+            <option value="yam">Yam</option>
+            <option value="carrot">Carrot</option>
+            <option value="cabbage">Cabbage</option>
+            <option value="cauliflower">Cauliflower</option>
+            <option value="spinach">Spinach</option>
+            <option value="lettuce">Lettuce</option>
+            <option value="cucumber">Cucumber</option>
+            <option value="pumpkin">Pumpkin</option>
+            <option value="brinjal">Brinjal</option>
+            <option value="okra">Okra</option>
+            <option value="green_bean">Green Bean</option>
+            <option value="bell_pepper">Bell Pepper</option>
+            <option value="chili">Chili</option>
+            <option value="garlic">Garlic</option>
+            <option value="ginger">Ginger</option>
+            <option value="turmeric">Turmeric</option>
+            <option value="banana">Banana</option>
+            <option value="mango">Mango</option>
+            <option value="papaya">Papaya</option>
+            <option value="pineapple">Pineapple</option>
+            <option value="coconut">Coconut</option>
+            <option value="coffee">Coffee</option>
+            <option value="tea">Tea</option>
+            <option value="rubber">Rubber</option>
+            <option value="tobacco">Tobacco</option>
+            <option value="jute">Jute</option>
+            <option value="sesame">Sesame</option>
+            <option value="castor">Castor</option>
+        </select>
+        <input type="text" id="rotation-search" placeholder="Or type crop name (e.g., Maize)">
+        <div id="rotation-result" class="highlight result"></div>
+    </section>
+    <section id="zbnf">
+        <h2>Zero Budget Natural Farming</h2>
+        <img src="zbnf.jpg" alt="Zero Budget Farming">
+        <p>Select or search your crop for ZBNF tips:</p>
+        <select id="zbnf-select">
+            <option value="">Select a crop</option>
+            <option value="rice">Rice</option>
+            <option value="wheat">Wheat</option>
+            <option value="maize">Maize</option>
+            <option value="cotton">Cotton</option>
+            <option value="barley">Barley</option>
+            <option value="millets">Millets</option>
+            <option value="potato">Potato</option>
+            <option value="soybean">Soybean</option>
+            <option value="sugarcane">Sugarcane</option>
+            <option value="tomato">Tomato</option>
+            <option value="onion">Onion</option>
+            <option value="chickpea">Chickpea</option>
+            <option value="lentil">Lentil</option>
+            <option value="pea">Pea</option>
+            <option value="groundnut">Groundnut</option>
+            <option value="sunflower">Sunflower</option>
+            <option value="mustard">Mustard</option>
+            <option value="sorghum">Sorghum</option>
+            <option value="oats">Oats</option>
+            <option value="rye">Rye</option>
+            <option value="cassava">Cassava</option>
+            <option value="sweet_potato">Sweet Potato</option>
+            <option value="yam">Yam</option>
+            <option value="carrot">Carrot</option>
+            <option value="cabbage">Cabbage</option>
+            <option value="cauliflower">Cauliflower</option>
+            <option value="spinach">Spinach</option>
+            <option value="lettuce">Lettuce</option>
+            <option value="cucumber">Cucumber</option>
+            <option value="pumpkin">Pumpkin</option>
+            <option value="brinjal">Brinjal</option>
+            <option value="okra">Okra</option>
+            <option value="green_bean">Green Bean</option>
+            <option value="bell_pepper">Bell Pepper</option>
+            <option value="chili">Chili</option>
+            <option value="garlic">Garlic</option>
+            <option value="ginger">Ginger</option>
+            <option value="turmeric">Turmeric</option>
+            <option value="banana">Banana</option>
+            <option value="mango">Mango</option>
+            <option value="papaya">Papaya</option>
+            <option value="pineapple">Pineapple</option>
+            <option value="coconut">Coconut</option>
+            <option value="coffee">Coffee</option>
+            <option value="tea">Tea</option>
+            <option value="rubber">Rubber</option>
+            <option value="tobacco">Tobacco</option>
+            <option value="jute">Jute</option>
+            <option value="sesame">Sesame</option>
+            <option value="castor">Castor</option>
+        </select>
+        <input type="text" id="zbnf-search" placeholder="Or type crop name (e.g., Potato)">
+        <div id="zbnf-result" class="highlight result"></div>
+    </section>
+    <section id="contact">
+        <h2>Get in Touch</h2>
+        <img src="contact-image.jpg" alt="Contact Us">
+        <p>Have questions? Reach out to us!</p>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    <footer>
+        <p>© 2025 FarmingGuid. Made for Farmers, by students.</p>
+    </footer>
+
+    <script>
+        const irrigationData = {
+            "rice": "Maintain 5-10 cm water depth, irrigate weekly.",
+            "wheat": "4-6 irrigations during growth cycle.",
+            "maize": "Water every 7-10 days, adjust for soil moisture.",
+            "cotton": "Irrigate every 10-15 days, depending on soil type.",
+            "barley": "3-5 irrigations, focus on early growth stages.",
+            "millets": "Light irrigation every 10-12 days, drought-tolerant.",
+            "potato": "Irrigate every 8-10 days, keep soil moist.",
+            "soybean": "Water every 7-12 days, ensure good drainage.",
+            "sugarcane": "Irrigate every 12-15 days, higher in dry season.",
+            "tomato": "Water every 5-7 days, avoid water stress.",
+            "onion": "Irrigate every 7-10 days, reduce near harvest.",
+            "chickpea": "2-3 irrigations, mainly at flowering stage.",
+            "lentil": "2-3 irrigations, avoid excess water.",
+            "pea": "Irrigate every 7-10 days, especially during pod formation.",
+            "groundnut": "Water every 10-14 days, critical at pegging stage.",
+            "sunflower": "Irrigate every 10-12 days, drought-tolerant.",
+            "mustard": "2-4 irrigations, focus on flowering.",
+            "sorghum": "Water every 10-15 days, drought-resistant.",
+            "oats": "3-4 irrigations, mainly at tillering stage.",
+            "rye": "2-3 irrigations, drought-tolerant.",
+            "cassava": "Irrigate every 10-14 days in dry periods.",
+            "sweet_potato": "Water every 10-12 days, reduce near harvest.",
+            "yam": "Irrigate every 12-15 days, ensure drainage.",
+            "carrot": "Water every 7-10 days, keep soil moist.",
+            "cabbage": "Irrigate every 5-7 days, consistent moisture.",
+            "cauliflower": "Water every 5-7 days, avoid drought.",
+            "spinach": "Irrigate every 5-7 days, keep soil moist.",
+            "lettuce": "Water every 5-7 days, avoid wilting.",
+            "cucumber": "Irrigate every 4-6 days, high water need.",
+            "pumpkin": "Water every 7-10 days, deep watering.",
+            "brinjal": "Irrigate every 5-7 days, consistent moisture.",
+            "okra": "Water every 7-10 days, drought-tolerant.",
+            "green_bean": "Irrigate every 5-7 days, pod filling stage critical.",
+            "bell_pepper": "Water every 5-7 days, avoid stress.",
+            "chili": "Irrigate every 5-7 days, reduce near maturity.",
+            "garlic": "Water every 7-10 days, reduce near harvest.",
+            "ginger": "Irrigate every 7-10 days, high moisture need.",
+            "turmeric": "Water every 7-10 days, ensure drainage.",
+            "banana": "Irrigate every 7-10 days, high water demand.",
+            "mango": "Water every 10-15 days, less after fruit set.",
+            "papaya": "Irrigate every 5-7 days, consistent moisture.",
+            "pineapple": "Water every 10-14 days, drought-tolerant.",
+            "coconut": "Irrigate every 10-15 days, deep watering.",
+            "coffee": "Water every 7-10 days, critical during flowering.",
+            "tea": "Irrigate every 7-10 days, avoid waterlogging.",
+            "rubber": "Water every 10-15 days in dry season.",
+            "tobacco": "Irrigate every 7-10 days, reduce near harvest.",
+            "jute": "Water every 7-10 days, high moisture need.",
+            "sesame": "2-3 irrigations, critical at flowering.",
+            "castor": "Irrigate every 10-14 days, drought-tolerant."
+        };
+
+        const temperatureData = {
+            "rice": "20-30°C, warm and humid climate.",
+            "wheat": "15-25°C, cool season crop.",
+            "maize": "20-30°C, warm weather crop.",
+            "cotton": "25-35°C, thrives in hot climates.",
+            "barley": "15-25°C, cool season crop.",
+            "millets": "25-35°C, heat-tolerant.",
+            "potato": "15-20°C, cool weather crop.",
+            "soybean": "20-30°C, warm season crop.",
+            "sugarcane": "25-35°C, tropical climate.",
+            "tomato": "20-30°C, warm but not extreme.",
+            "onion": "15-25°C, cool to moderate.",
+            "chickpea": "15-25°C, cool season crop.",
+            "lentil": "15-25°C, cool weather.",
+            "pea": "15-20°C, cool season crop.",
+            "groundnut": "25-35°C, warm climate.",
+            "sunflower": "20-30°C, warm and sunny.",
+            "mustard": "15-25°C, cool season crop.",
+            "sorghum": "25-35°C, heat-tolerant.",
+            "oats": "15-25°C, cool season crop.",
+            "rye": "10-20°C, cold-tolerant.",
+            "cassava": "25-35°C, tropical crop.",
+            "sweet_potato": "20-30°C, warm climate.",
+            "yam": "25-35°C, tropical conditions.",
+            "carrot": "15-20°C, cool weather.",
+            "cabbage": "15-20°C, cool season crop.",
+            "cauliflower": "15-20°C, cool weather.",
+            "spinach": "10-20°C, cool season crop.",
+            "lettuce": "15-20°C, cool climate.",
+            "cucumber": "20-30°C, warm weather.",
+            "pumpkin": "20-30°C, warm season crop.",
+            "brinjal": "25-35°C, warm climate.",
+            "okra": "25-35°C, heat-loving crop.",
+            "green_bean": "20-30°C, warm season.",
+            "bell_pepper": "20-30°C, warm weather.",
+            "chili": "25-35°C, hot climate.",
+            "garlic": "15-25°C, cool to moderate.",
+            "ginger": "25-35°C, warm and humid.",
+            "turmeric": "25-35°C, tropical climate.",
+            "banana": "25-35°C, tropical crop.",
+            "mango": "25-35°C, warm climate.",
+            "papaya": "25-35°C, tropical conditions.",
+            "pineapple": "25-35°C, warm weather.",
+            "coconut": "25-35°C, tropical climate.",
+            "coffee": "20-30°C, warm and humid.",
+            "tea": "20-30°C, moderate climate.",
+            "rubber": "25-35°C, tropical conditions.",
+            "tobacco": "20-30°C, warm season.",
+            "jute": "25-35°C, warm and humid.",
+            "sesame": "25-35°C, heat-tolerant.",
+            "castor": "25-35°C, warm climate."
+        };
+
+        const rotationData = {
+            "rice": "Follow with legumes (pea, lentil) to fix nitrogen.",
+            "wheat": "Rotate with chickpea or mustard for soil health.",
+            "maize": "Follow with soybean or groundnut.",
+            "cotton": "Rotate with sorghum or millets.",
+            "barley": "Follow with pea or lentil.",
+            "millets": "Rotate with groundnut or sesame.",
+            "potato": "Follow with cabbage or carrot.",
+            "soybean": "Rotate with maize or wheat.",
+            "sugarcane": "Follow with chickpea or lentil.",
+            "tomato": "Rotate with onion or garlic.",
+            "onion": "Follow with tomato or cucumber.",
+            "chickpea": "Rotate with wheat or maize.",
+            "lentil": "Follow with rice or barley.",
+            "pea": "Rotate with wheat or oats.",
+            "groundnut": "Follow with millets or sorghum.",
+            "sunflower": "Rotate with maize or soybean.",
+            "mustard": "Follow with wheat or chickpea.",
+            "sorghum": "Rotate with cotton or groundnut.",
+            "oats": "Follow with pea or lentil.",
+            "rye": "Rotate with barley or mustard.",
+            "cassava": "Follow with sweet potato or yam.",
+            "sweet_potato": "Rotate with cassava or pumpkin.",
+            "yam": "Follow with cassava or okra.",
+            "carrot": "Rotate with potato or cabbage.",
+            "cabbage": "Follow with potato or spinach.",
+            "cauliflower": "Rotate with tomato or carrot.",
+            "spinach": "Follow with cabbage or lettuce.",
+            "lettuce": "Rotate with spinach or cucumber.",
+            "cucumber": "Follow with tomato or bell pepper.",
+            "pumpkin": "Rotate with sweet potato or okra.",
+            "brinjal": "Follow with chili or tomato.",
+            "okra": "Rotate with pumpkin or yam.",
+            "green_bean": "Follow with maize or soybean.",
+            "bell_pepper": "Rotate with cucumber or tomato.",
+            "chili": "Follow with brinjal or onion.",
+            "garlic": "Rotate with tomato or onion.",
+            "ginger": "Follow with turmeric or chili.",
+            "turmeric": "Rotate with ginger or okra.",
+            "banana": "Follow with legume cover crops.",
+            "mango": "Rotate with groundnut or sesame.",
+            "papaya": "Follow with cucumber or pumpkin.",
+            "pineapple": "Rotate with sweet potato or cassava.",
+            "coconut": "Intercrop with banana or coffee.",
+            "coffee": "Rotate with legume cover crops.",
+            "tea": "Follow with sesame or mustard.",
+            "rubber": "Intercrop with coffee or banana.",
+            "tobacco": "Rotate with maize or soybean.",
+            "jute": "Follow with rice or lentil.",
+            "sesame": "Rotate with millets or groundnut.",
+            "castor": "Follow with sorghum or cotton."
+        };
+
+        const zbnfData = {
+            "rice": "Use Jeevamrutha weekly, mulch with straw.",
+            "wheat": "Apply Beejamrutha to seeds, use dry mulch.",
+            "maize": "Mulch with crop residue, apply Jeevamrutha.",
+            "cotton": "Use natural pest control, mulch heavily.",
+            "barley": "Apply Beejamrutha, mulch with leaves.",
+            "millets": "Minimal water, mulch with dry straw.",
+            "potato": "Use Jeevamrutha, cover soil with mulch.",
+            "soybean": "Mulch with legume residue, use Jeevamrutha.",
+            "sugarcane": "Heavy mulching, apply Jeevamrutha monthly.",
+            "tomato": "Use Jeevamrutha, mulch with straw.",
+            "onion": "Apply Beejamrutha, light mulching.",
+            "chickpea": "Mulch with dry leaves, use Jeevamrutha.",
+            "lentil": "Minimal water, mulch with straw.",
+            "pea": "Use Jeevamrutha, mulch with crop residue.",
+            "groundnut": "Mulch heavily, apply Beejamrutha.",
+            "sunflower": "Dry mulch, use Jeevamrutha sparingly.",
+            "mustard": "Mulch with straw, apply Beejamrutha.",
+            "sorghum": "Minimal water, heavy mulching.",
+            "oats": "Use Jeevamrutha, mulch with dry leaves.",
+            "rye": "Apply Beejamrutha, light mulching.",
+            "cassava": "Mulch with crop residue, use Jeevamrutha.",
+            "sweet_potato": "Heavy mulching, apply Jeevamrutha.",
+            "yam": "Mulch with straw, use natural pest control.",
+            "carrot": "Use Jeevamrutha, light mulching.",
+            "cabbage": "Mulch with leaves, apply Jeevamrutha.",
+            "cauliflower": "Use Jeevamrutha, mulch with straw.",
+            "spinach": "Light mulching, apply Beejamrutha.",
+            "lettuce": "Mulch with straw, use Jeevamrutha.",
+            "cucumber": "Heavy mulching, apply Jeevamrutha.",
+            "pumpkin": "Mulch with crop residue, use Jeevamrutha.",
+            "brinjal": "Use Jeevamrutha, mulch with straw.",
+            "okra": "Mulch heavily, apply Beejamrutha.",
+            "green_bean": "Use Jeevamrutha, light mulching.",
+            "bell_pepper": "Mulch with straw, apply Jeevamrutha.",
+            "chili": "Use Beejamrutha, mulch with leaves.",
+            "garlic": "Light mulching, apply Jeevamrutha.",
+            "ginger": "Heavy mulching, use Jeevamrutha.",
+            "turmeric": "Mulch with straw, apply Jeevamrutha.",
+            "banana": "Heavy mulching, use Jeevamrutha monthly.",
+            "mango": "Mulch with dry leaves, apply Jeevamrutha.",
+            "papaya": "Use Jeevamrutha, mulch with straw.",
+            "pineapple": "Mulch heavily, apply Beejamrutha.",
+            "coconut": "Intercrop with legumes, use Jeevamrutha.",
+            "coffee": "Mulch with coffee husk, apply Jeevamrutha.",
+            "tea": "Light mulching, use Jeevamrutha.",
+            "rubber": "Mulch with leaves, apply Jeevamrutha.",
+            "tobacco": "Use Jeevamrutha, mulch with straw.",
+            "jute": "Heavy mulching, apply Jeevamrutha.",
+            "sesame": "Mulch with dry straw, use Beejamrutha.",
+            "castor": "Mulch heavily, apply Jeevamrutha."
+        };
+
+        function setupSection(sectionId, data) {
+            const select = document.getElementById(`${sectionId}-select`);
+            const searchInput = document.getElementById(`${sectionId}-search`);
+            const resultDiv = document.getElementById(`${sectionId}-result`);
+
+            select.addEventListener('change', function() {
+                const crop = this.value;
+                if (crop === '') {
+                    resultDiv.textContent = 'Please select a crop.';
+                } else if (data[crop]) {
+                    resultDiv.textContent = `${crop.charAt(0).toUpperCase() + crop.slice(1)}: ${data[crop]}`;
+                } else {
+                    resultDiv.textContent = 'Sorry, no data found for this crop.';
+                }
+                searchInput.value = '';
+            });
+
+            searchInput.addEventListener('input', function() {
+                const query = this.value.trim().toLowerCase();
+                if (query === '') {
+                    resultDiv.textContent = 'Please enter or select a crop.';
+                } else if (data[query]) {
+                    resultDiv.textContent = `${query.charAt(0).toUpperCase() + query.slice(1)}: ${data[query]}`;
+                } else {
+                    resultDiv.textContent = 'Sorry, no data found for this crop.';
+                }
+                select.value = '';
+            });
+        }
+
+        setupSection('irrigation', irrigationData);
+        setupSection('temperature', temperatureData);
+        setupSection('rotation', rotationData);
+        setupSection('zbnf', zbnfData);
+    </script>
+</body>
+</html>
